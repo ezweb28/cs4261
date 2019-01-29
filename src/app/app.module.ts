@@ -14,14 +14,35 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 // import { AngularFirestypeModule } from 'angular-firestype';
 
+import { HttpClientModule } from '@angular/common/http';
+import { Storage, IonicStorageModule } from '@ionic/storage';
+import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
+
+export function jwtOptionsFactory(storage) {
+  return {
+    tokenGetter: () => {
+      return storage.get('access_token');
+    },
+    whitelistedDomains: ['localhost:8001']
+  }
+}
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     // AngularFirestypeModule,
-    AngularFirestoreModule
-  ],
+    AngularFirestoreModule,
+    HttpClientModule,
+    IonicStorageModule.forRoot(),
+    JwtModule.forRoot({
+    jwtOptionsProvider: {
+      provide: JWT_OPTIONS,
+      useFactory: jwtOptionsFactory,
+      deps: [Storage],
+    }
+  })],
   providers: [
     StatusBar,
     SplashScreen,
