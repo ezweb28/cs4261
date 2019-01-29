@@ -7,6 +7,8 @@ const routes: Routes = [
   { path: 'details', loadChildren: './pages/todo-details/todo-details.module#TodoDetailsPageModule' },
   { path: 'details/:id', loadChildren: './pages/todo-details/todo-details.module#TodoDetailsPageModule' },
   { path: 'todo', loadChildren: './todo/todo.module#TodoPageModule' },
+  { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
+  { path: 'inside', loadChildren: './pages/inside/inside.module#InsidePageModule' },
 ];
 
 @NgModule({
