@@ -11,7 +11,9 @@ export const environment = {
     projectId: "ionicapp-ee7f9",
     storageBucket: "ionicapp-ee7f9.appspot.com",
     messagingSenderId: "139768935636"
-  }
+  },
+  url: 'http://localhost:8200'
+
 };
 
 /*

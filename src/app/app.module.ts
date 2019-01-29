@@ -16,6 +16,17 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 import { HttpClientModule } from '@angular/common/http';
 import { WeatherService } from './services/weather-api.service';
+import { Storage, IonicStorageModule } from '@ionic/storage';
+import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
+
+export function jwtOptionsFactory(storage) {
+  return {
+    tokenGetter: () => {
+      return storage.get('access_token');
+    },
+    whitelistedDomains: ['localhost:8001']
+  }
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,8 +35,15 @@ import { WeatherService } from './services/weather-api.service';
     AngularFireModule.initializeApp(environment.firebase),
     // AngularFirestypeModule,
     AngularFirestoreModule,
-    HttpClientModule
-  ],
+    HttpClientModule,
+    IonicStorageModule.forRoot(),
+    JwtModule.forRoot({
+    jwtOptionsProvider: {
+      provide: JWT_OPTIONS,
+      useFactory: jwtOptionsFactory,
+      deps: [Storage],
+    }
+  })],
   providers: [
     StatusBar,
     SplashScreen,

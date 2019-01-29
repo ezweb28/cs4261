@@ -50,13 +50,13 @@ export class TodoDetailsPage implements OnInit {
       this.todoService.updateTodo(this.todo, this.todoId).then(() => {
         loading.dismiss();
         // this.nav.goBack('home');
-        this.nav.navigateBack('home');
+        this.nav.navigateBack('inside');
       });
     } else {
       this.todoService.addTodo(this.todo).then(() => {
         loading.dismiss();
         // this.nav.goBack('home');
-        this.nav.navigateBack('home');
+        this.nav.navigateBack('inside');
       });
     }
   }
