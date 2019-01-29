@@ -15,6 +15,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 // import { AngularFirestypeModule } from 'angular-firestype';
 
 import { HttpClientModule } from '@angular/common/http';
+import { WeatherService } from './services/weather-api.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    WeatherService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherService } from '../../services/weather-api.service';
-import { NavController, NavParams } from '@ionic/angular';
+import { WeatherService, SearchType } from '../../services/weather-api.service';
+import { LoadingController } from '@ionic/angular';
+import { Observable } from 'rxjs';
+//import { NavController, NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-weather',
@@ -8,24 +10,23 @@ import { NavController, NavParams } from '@ionic/angular';
   styleUrls: ['./weather.page.scss'],
 })
 export class WeatherPage implements OnInit {
-  weather:any;
-  location: {
-    city:string,
-    country:string
-  }
+  results: Observable<any>;
+  searchTerm = '';
+  type: SearchType = SearchType.all;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private weatherService:WeatherService) {
-
-   }
+  constructor( 
+    private weatherService:WeatherService,
+    public loadingController: LoadingController) { }
 
   ngOnInit() {
-    this.location = {
-      city: 'Atlanta',
-      country: 'US'
-    }
-    this.weatherService.getWeather(this.location.city, this.location.country).subscribe(this.weather => {
-      console.log(this.weather);
-    })
+  }
+
+  searchChanged() {
+    this.results = this.weatherService.searchData(this.searchTerm, this.type);
+    //console.log("My result: ", this.results)
+    //this.results.subscribe(res => {
+
+    //})
   }
 
 }
