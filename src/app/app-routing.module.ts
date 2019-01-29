@@ -7,16 +7,20 @@ const routes: Routes = [
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   { path: 'details', loadChildren: './pages/todo-details/todo-details.module#TodoDetailsPageModule' },
   { path: 'details/:id', loadChildren: './pages/todo-details/todo-details.module#TodoDetailsPageModule' },
+  { path: 'weather', loadChildren: './pages/weather/weather.module#WeatherPageModule' },
+  { path: 'weather/:id', loadChildren: './pages/weather/weather.module#WeatherPageModule' },
   { path: 'todo', loadChildren: './todo/todo.module#TodoPageModule' },
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
   { path: 'inside',
     loadChildren: './pages/inside/inside.module#InsidePageModule',
     canActivate: [AuthGuardService]
   },
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }
