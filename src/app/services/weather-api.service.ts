@@ -23,6 +23,7 @@ export class WeatherService {
     this.apiURL = 'https://api.openweathermap.org/data/2.5/weather?q=London,UK&appid=836cd1a48aafe618b26f7f08c777df54';
   }
 
+  
   searchData(title: string, SearchType: string): Observable<any>{
      return this.http.get(`${this.apiURL}?s=${encodeURI(title)}&type=${SearchType}&apikey=${this.apiKey}`)
      .pipe(
