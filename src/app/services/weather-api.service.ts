@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators'
 export enum SearchType {
   all = '',
   movie = 'movie',
-  series = '',
+  series = 'series',
   episode = 'episode'
 }
 
@@ -19,8 +19,8 @@ export class WeatherService {
   apiURL = 'http://www.omdbapi.com/';
 
   constructor(private http: HttpClient) {
-    console.log('Hello Weather Service');
-    this.apiURL = 'https://api.openweathermap.org/data/2.5/weather?q=London,UK&appid=836cd1a48aafe618b26f7f08c777df54';
+    console.log('Are you looking for movies?');
+    //this.apiURL = 'https://api.openweathermap.org/data/2.5/weather?q=London,UK&appid=836cd1a48aafe618b26f7f08c777df54';
   }
 
   
