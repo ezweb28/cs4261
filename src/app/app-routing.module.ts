@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: 'details', loadChildren: './pages/todo-details/todo-details.module#TodoDetailsPageModule' },
   { path: 'details/:id', loadChildren: './pages/todo-details/todo-details.module#TodoDetailsPageModule' },
   { path: 'weather', loadChildren: './pages/weather/weather.module#WeatherPageModule' },
-  { path: 'weather/:id', loadChildren: './pages/weather/weather.module#WeatherPageModule' },
+  { path: 'weather/:id', loadChildren: './pages/weather-details/weather-details.module#WeatherDetailsPageModule' },
   { path: 'todo', loadChildren: './todo/todo.module#TodoPageModule' },
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
   { path: 'inside',
